@@ -1,2 +1,1 @@
-# WeatherReport
-App météo pour projet E5
+PROBLEME AVEC LE CLOSEMODAL() DANS THEMODAL 7 je peux quitter la fenetre add que si j'ajoute une ville, pas si je clique à coté
