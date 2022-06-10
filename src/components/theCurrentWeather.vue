@@ -2,22 +2,22 @@
   <div class="current-weather">
         <div class="container">
             <div class="weather-info">
-                <span class="city"> {{ this.currentWeather.name }} </span>
-                <span class="current-temperature"> {{ Math.round(this.currentWeather.main.temp) }} </span>
+                <span class="city"> {{ this.currentWeather.name }} </span> <!-- Nom de la ville navbar -->
+                <span class="current-temperature"> {{ Math.round(this.currentWeather.main.temp) }} </span> <!-- Température actuelle -->
           
                 <div class="high-low-temperatures">
                     <div class="high">
                         <i class="fas fa-chevron-up"></i>
-                        <span> {{ Math.round(this.currentWeather.main.temp_max) }}&deg; </span>
+                        <span> {{ Math.round(this.currentWeather.main.temp_max) }}&deg; </span> <!-- Temp max -->
                     </div>
                     <div class="low">
                         <i class="fas fa-chevron-down"></i>
-                        <span> {{ Math.round(this.currentWeather.main.temp_min) }}&deg; </span>
+                        <span> {{ Math.round(this.currentWeather.main.temp_min) }}&deg; </span> <!-- Temp min -->
                     </div>
                 </div>
         
-                <span class="condition">{{ this.currentWeather.weather[0].description }}</span>
-                <span class="feels-like">Ressenti {{ Math.round(this.currentWeather.main.feels_like) }}&deg; </span>
+                <span class="condition">{{ this.currentWeather.weather[0].description }}</span> <!-- Condition météo -->
+                <span class="feels-like">Ressenti {{ Math.round(this.currentWeather.main.feels_like) }}&deg; </span> <!-- ressenti -->
             </div>
 
             <div class="weather-icon">

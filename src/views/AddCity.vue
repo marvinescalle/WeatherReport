@@ -1,7 +1,8 @@
 <template>
   <div class="grid">
     <div class="city-link" v-for="(city, index) in cities" v-bind:key="index">
-      <theCity v-bind:city="city" v-bind:edit="edit"/>
+      <!-- permet d'afficher les villes -->
+      <theCity v-bind:city="city" />
     </div>
   </div>
 </template>
@@ -11,10 +12,8 @@ import theCity from "../components/theCity.vue"
 
 export default {
   name: "AddCity",
-  props: ['cities', "edit"],
-  created() {
-    console.log(this.cities);
-  },
+  props: ['cities'],
+
   components: {
     theCity,
   }

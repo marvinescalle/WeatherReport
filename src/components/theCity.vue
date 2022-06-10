@@ -1,24 +1,24 @@
 <template>
+<!-- click pour ouvrir la météo d'une ville -->
   <div @click="goToWeather" class="city">
-      <i v-if="edit" @click="removeCity" class="far fa-trash-alt edit" ref="edit"></i>
     <span> {{this.city.city}} </span>
     <div class="weather">
-       <span> {{Math.round(this.city.currentWeather.main.temp)}}&deg; </span>
-       <img :src="require(`../../public/conditions/${this.city.currentWeather.weather[0].icon}.svg`)" alt="">
+       <span> {{Math.round(this.city.currentWeather.main.temp)}}&deg; </span> <!-- donne la température -->
+       <img :src="require(`../../public/conditions/${this.city.currentWeather.weather[0].icon}.svg`)" alt=""> <!-- donne l'icone de la météo -->
     </div>
     <div class="video">
-      <video autoplay loop muted :src="require(`../../public/videos/${this.city.currentWeather.weather[0].icon}.mp4`)"></video>
+      <video autoplay loop muted playsinline :src="require(`../../public/videos/${this.city.currentWeather.weather[0].icon}.mp4`)"></video>
       <div class="bg-overlay"></div>
     </div>
   </div>
 </template>
 
 <script>
-import db from "../firebase/firebaseinit";
+// import db from "../firebase/firebaseinit";
 
 export default {
     name:"theCity",
-    props: ['city', "edit"],
+    props: ['city'],
     created() {},
     data () {
       return {
@@ -26,20 +26,6 @@ export default {
       }
     },
     methods: {
-      removeCity() {
-        db.collection("cities")
-        .where('city', '==', `${this.city.city}`)
-        .get()
-        .then((docs) => {
-          docs.forEach((doc) => {
-            this.id = doc.id;            
-          });
-        }).then(() => {
-          db.collection("cities")
-            .doc(this.id)
-            .delete();
-        });
-      },
       goToWeather(e) {
         if (e.target === this.$refs.edit){
           //

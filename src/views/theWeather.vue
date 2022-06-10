@@ -4,6 +4,8 @@
       <span></span>
     </div>
     <div v-else class="weather" :class="{ day: isDay, night: isNight }">
+
+      <!-- Ajouter les données ici -->
       <div class="weather-wrap">
         <theCurrentWeather :isDay="isDay" :isNight="isNight" :currentWeather="currentWeather" />
         <theHourlyWeather :forecast="forecast" />
@@ -37,12 +39,14 @@ export default {
       currentTime: null,
     };
   },
-  created() {
-    this.getWeather();
-  },
-  beforeDestroy() {
-    this.$emit("resetDays")
-  },
+  // Afficher la page lors d'un click
+created() {
+  this.getWeather();
+},
+  // Reset la page pour afficher l'heure actuelle
+beforeDestroy() {
+  this.$emit("resetDays")
+},
   methods: {
     getWeather() {
       db.collection("cities")
@@ -52,9 +56,7 @@ export default {
         docs.forEach((doc) => {
           this.currentWeather = doc.data().currentWeather;
           axios
-            .get(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${doc.data().currentWeather.coord.lat}&lon=${doc.data().currentWeather.coord.lon}&exclude=current,minutley,alerts&units=metric&appid=${this.APIkey}`
-            )
+            .get(`https://api.openweathermap.org/data/2.5/onecall?lat=${doc.data().currentWeather.coord.lat}&lon=${doc.data().currentWeather.coord.lon}&exclude=current,minutley,alerts&units=metric&appid=${this.APIkey}`)
             .then((res) => {
               this.forecast = res.data;
             })

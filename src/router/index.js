@@ -5,6 +5,7 @@ import theWeather from '../views/theWeather.vue'
 
 Vue.use(VueRouter)
 
+// Donner les chemin des views 
 const routes = [
   {
     path: '/',
